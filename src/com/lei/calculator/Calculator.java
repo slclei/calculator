@@ -2,6 +2,8 @@ package com.lei.calculator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Vector;
+import java.awt.event.KeyEvent;
 
 public class Calculator {
 
@@ -14,6 +16,19 @@ public class Calculator {
 
     //Create result string
     String result = "";
+
+    //Set status of switches
+    int k1 = 1;
+    int k2 = 1;
+    int k3 = 1;
+    int k4 = 1;
+    int k5 = 1;
+
+    //Store button status
+    JButton store;
+
+    @SuppressWarnings(("rawtypes"))
+            Vector vt = new Vector(20, 10);
 
     //create main windows for the program
     JFrame frame = new JFrame("Calculator_Lei");
@@ -43,44 +58,59 @@ public class Calculator {
     JButton buttonMinus = new JButton("-");
     JButton buttonMulti = new JButton("*");
     JButton buttonDive = new JButton("/");
-    JButton buttonCal = new JButton("=");
+    JButton buttonCal = new JButton("=");        //orignial is button_dy
 
-    /* Next part is creating two panels, one for number and calculation buttons,
-    another is for display and clear button*/
+    //Constructor of Calculator
+    public Calculator(){
 
-    //Create first panel
-    JPanel pan1 = new JPanel();
+        button0.setMnemonic(KeyEvent.VK_0);
 
-    //Set pan1 as 4*4 matrix, with 5 pixel to the edge
-    pan1.setLayout(new GridLayout(4, 4, 5, 5));
+        resultTextField.setHorizontalAlignment((JTextField.RIGHT));
 
-    pan1.add(button7);
-    pan1.add(button8);
-    pan1.add(button9);
-    pan1.add(buttonDive);
-    pan1.add(button4);
-    pan1.add(button5);
-    pan1.add(button6);
-    pan1.add(buttonMulti);
-    pan1.add(button1);
-    pan1.add(button2);
-    pan1.add(button3);
-    pan1.add(buttonMinus);
-    pan1.add(button0);
-    pan1.add(buttonDot);
-    pan1.add(buttonCal);
-    pan1.add(buttonPlus);
+        //Create first panel
+        JPanel pan1 = new JPanel();
 
-    //Set edge distance of pan2 objectives
-    pan.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+        //Set pan1 as 4*4 matrix, with 5 pixel to the edge
+        pan1.setLayout(new GridLayout(4, 4, 5, 5));
 
-    //Set pan2 for second panel
-    JPanel pan2 = new JPanel();
-    pan2.setLayout(new BorderLayout());
-    pan2.add(resultTextField, BorderLayout.WEST);
-    pan2.add(clearButton, BorderLayout.EAST);
-    //Set edge distance of
+        pan1.add(button7);
+        pan1.add(button8);
+        pan1.add(button9);
+        pan1.add(buttonDive);
+        pan1.add(button4);
+        pan1.add(button5);
+        pan1.add(button6);
+        pan1.add(buttonMulti);
+        pan1.add(button1);
+        pan1.add(button2);
+        pan1.add(button3);
+        pan1.add(buttonMinus);
+        pan1.add(button0);
+        pan1.add(buttonDot);
+        pan1.add(buttonCal);
+        pan1.add(buttonPlus);
+
+        //Set edge distance of pan2 objectives
+        pan1.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+
+        //Set pan2 for second panel
+        JPanel pan2 = new JPanel();
+        pan2.setLayout(new BorderLayout());
+        pan2.add(resultTextField, BorderLayout.WEST);
+        pan2.add(clearButton, BorderLayout.EAST);
+
+        //Set edge distance
+        frame.setLocation(300, 200);
+
+        frame.setResizable(false);
+        frame.getContentPane().setLayout(new BorderLayout());
+        frame.getContentPane().add(pan2, BorderLayout.NORTH);
+        frame.getContentPane().add(pan1, BorderLayout.CENTER);
+
+        frame.pack();
+        frame.setVisible(true);
 
 
+    }
 
 }
