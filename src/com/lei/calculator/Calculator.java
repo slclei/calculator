@@ -4,6 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 
 public class Calculator {
+
+    //Create strings to record input
+    String str1 = "0";
+    String str2 = "0";
+
+    //Create singal recorder, default as +
+    String signal = "+";
+
+    //Create result string
+    String result = "";
+
     //create main windows for the program
     JFrame frame = new JFrame("Calculator_Lei");
 
@@ -60,6 +71,14 @@ public class Calculator {
     pan1.add(buttonCal);
     pan1.add(buttonPlus);
 
+    //Set edge distance of pan2 objectives
+    pan.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
+
+    //Set pan2 for second panel
+    JPanel pan2 = new JPanel();
+    pan2.setLayout(new BorderLayout());
+    pan2.add(resultTextField, BorderLayout.WEST);
+    pan2.add(clearButton, BorderLayout.EAST);
     //Set edge distance of
 
 
