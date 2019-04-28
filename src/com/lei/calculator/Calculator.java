@@ -2,22 +2,24 @@ package com.lei.calculator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.Vector;
 import java.awt.event.KeyEvent;
 
 public class Calculator {
 
-    //Create strings to record input
+    //Create strings to record two input numbers
     String str1 = "0";
     String str2 = "0";
 
     //Create singal recorder, default as +
     String signal = "+";
 
-    //Create result string
+    //Create result string to record the result
     String result = "";
 
-    //Set status of switches
+    /* Set status of switches. k1 as input direction, k2 as signal number,
+    * k3 and k4 indicate str1 and str2 to be clear or not, k5 indicates dot input or not.  */
     int k1 = 1;
     int k2 = 1;
     int k3 = 1;
@@ -28,7 +30,7 @@ public class Calculator {
     JButton store;
 
     @SuppressWarnings(("rawtypes"))
-            Vector vt = new Vector(20, 10);
+    Vector vt = new Vector(20, 10);
 
     //create main windows for the program
     JFrame frame = new JFrame("Calculator_Lei");
@@ -58,13 +60,14 @@ public class Calculator {
     JButton buttonMinus = new JButton("-");
     JButton buttonMulti = new JButton("*");
     JButton buttonDive = new JButton("/");
-    JButton buttonCal = new JButton("=");        //orignial is button_dy
+    JButton buttonCal = new JButton("=");        //orignial is button_dy, or res
 
     //Constructor of Calculator
     public Calculator(){
 
         button0.setMnemonic(KeyEvent.VK_0);
 
+        //Text align to right
         resultTextField.setHorizontalAlignment((JTextField.RIGHT));
 
         //Create first panel
@@ -99,7 +102,7 @@ public class Calculator {
         pan2.add(resultTextField, BorderLayout.WEST);
         pan2.add(clearButton, BorderLayout.EAST);
 
-        //Set edge distance
+        //Set windows position
         frame.setLocation(300, 200);
 
         frame.setResizable(false);
@@ -109,6 +112,82 @@ public class Calculator {
 
         frame.pack();
         frame.setVisible(true);
+
+        //Listen to keyboard input
+        class Listener implements ActionListener {
+            @SuppressWarnings("unchecked")
+            public void actionPerformed(ActiveEvent e) {
+                String ss = ((JButton) e.getSource()).getText();
+                store = (JButton) e.getSource();
+                vt.add(store);
+
+                if (k1 ==1) {
+                    if (k3 == 1) {
+                        str1 = "";
+
+
+                        k5 =1;
+                    }
+                    str1 = str1+ss;
+
+                    k3 =k3 +1;
+
+                    //Display the right number
+                    resultTextField.setText(str1);
+                }
+                else if (k1 == 2) {
+                    if (k4==1) {
+                        str2 = "";
+
+                        k5 =1;
+                    }
+                    str2 = str2 +ss;
+                    k4 = k4+1;
+                    resultTextField.setText(str2);
+                }
+            }
+        }
+
+        class ListenerSignal implements ActionListener{
+            //Operation singal
+            public void actionPerformed(ActiveEvent e) {
+                String ss2 = ((JButton) e.getSource()).getText();
+                store = (JButton) e.getSource();
+
+                vt.add(store);
+
+                if (k2 == 1) {
+                    k1 = 2;
+                    k5 =1;
+                    signal = ss2;
+                }
+
+                else {
+                    int a = vt.size();
+                    JButton c = (JButton) vt.get(a-2);
+
+                    if (!(c.getText().equals("+")) && !(c.getText().equals("-"))
+                            && !(c.getText().equals("*"))
+                            && !(c.getText().equals("/"))) {
+                        cal();
+                        str1 = result;
+                        k1 = 2;
+                        k5 = 1;
+                        k4 = 1;
+                        signal = ss2;
+                    }
+
+                    k2 =k2+1;
+                }
+
+            }
+        }
+
+        class ListenerClear implements ActionListener{
+            
+        }
+
+
 
 
     }
