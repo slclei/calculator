@@ -73,6 +73,15 @@ public class Calculator {
 
         //Set keyboard with button; ie. can press the corresponding key in keyboard instead of click it.
         button0.setMnemonic(KeyEvent.VK_0);
+        button1.setMnemonic(KeyEvent.VK_1);
+        button2.setMnemonic(KeyEvent.VK_2);
+        button3.setMnemonic(KeyEvent.VK_3);
+        button4.setMnemonic(KeyEvent.VK_4);
+        button5.setMnemonic(KeyEvent.VK_5);
+        button6.setMnemonic(KeyEvent.VK_6);
+        button7.setMnemonic(KeyEvent.VK_7);
+        button8.setMnemonic(KeyEvent.VK_8);
+        button9.setMnemonic(KeyEvent.VK_9);
         //TODO set other keyboard equal
 
         //Text align to right
@@ -181,7 +190,7 @@ public class Calculator {
                     k5 =1;
                     signal = ss2;
                     //update signal input numbers.
-                    k2++;
+                    //k2++;
                 }
 
                 else {
@@ -199,8 +208,10 @@ public class Calculator {
                         signal = ss2;
                     }
 
-                    k2++;
+                    //k2++;
                 }
+
+                k2++;
 
             }
         }
@@ -347,8 +358,8 @@ public class Calculator {
             if (str2.equals("."))
                 str2 = "0.0";
 
-            a2 = Double.valueOf(str1).doubleValue();
-            b2 = Double.valueOf(str2).doubleValue();
+            a2 = Double.valueOf(str1);
+            b2 = Double.valueOf(str2);
 
             switch (c) {
                 case "+":
@@ -374,7 +385,7 @@ public class Calculator {
                     break;
             }
 
-            result = ((new Double(result2)).toString());
+            result = Double.toString(result2);
 
             resultTextField.setText(result);
         }

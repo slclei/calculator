@@ -5,3 +5,7 @@ Calculator from Shiyanlou
 1 when implenments actionListener, @Override actionPerformed should be automatically input. Otherwise there will be erros.
 2 whole code is not perfact as OOP. 
 3 severl field and method could be private.
+
+TODO:
+1 float actionListener seems has repeated code with number actionListener. Is there any way to simplify it?
+2 Is there any way to seperate Calculator and cal()?
