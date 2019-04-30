@@ -183,17 +183,7 @@ public class Calculator {
 
                 vt.add(store);
 
-                if (k2 == 1) {
-                    /* if k1==1, then input number is stored in str1;
-                     *if k1==2, then input number is stored in str2. */
-                    k1 = 2;
-                    k5 =1;
-                    signal = ss2;
-                    //update signal input numbers.
-                    //k2++;
-                }
 
-                else {
                     int a = vt.size();
                     JButton c = (JButton) vt.get(a-2);
 
@@ -207,11 +197,6 @@ public class Calculator {
                         k4 = 1;
                         signal = ss2;
                     }
-
-                    //k2++;
-                }
-
-                k2++;
 
             }
         }
