@@ -182,21 +182,26 @@ public class Calculator {
                 store = (JButton) e.getSource();
 
                 vt.add(store);
-
-
                     int a = vt.size();
                     JButton c = (JButton) vt.get(a-2);
 
+                    //Check if the second last one is number, then calculate previous calculation
+                // otherwise, if the second last one is signal, ignore the input
+                if (k2!=1) {
                     if (!(c.getText().equals("+")) && !(c.getText().equals("-"))
                             && !(c.getText().equals("*"))
                             && !(c.getText().equals("/"))) {
                         cal();
                         str1 = result;
-                        k1 = 2;
-                        k5 = 1;
+
                         k4 = 1;
-                        signal = ss2;
+                        //resultTextField.setText(signal);
                     }
+                }
+                k1 = 2;
+                k5 = 1;
+                signal = ss2;
+                k2++;
 
             }
         }
@@ -227,7 +232,8 @@ public class Calculator {
         //"=" event
         class ListenerCal implements ActionListener //implements ActionListener
         {
-            @SuppressWarnings("unchecked")
+
+        @SuppressWarnings("unchecked")
 
             @Override
             public void actionPerformed(ActionEvent e) {

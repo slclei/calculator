@@ -9,3 +9,8 @@ Calculator from Shiyanlou
 TODO:
 1 float actionListener seems has repeated code with number actionListener. Is there any way to simplify it?
 2 Is there any way to seperate Calculator and cal()?
+3 Is it possible to merge calListener into signalListener?
+
+4/31 update:
+Remove duplicate code in signalListener;
+
