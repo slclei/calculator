@@ -2,6 +2,7 @@ package com.lei.calculator;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.math.BigDecimal;
@@ -123,11 +124,12 @@ public class Calculator {
 
         //Action listener to the input
         //Listen to keyboard input, for numbers
-        class ListenerNumber implements ActionListener {
+        class ListenerNumber implements ActionListener //implements ActionListener
+        {
            @SuppressWarnings("unchecked")
 
             @Override
-            public void actionPerformed(ActiveEvent e) {
+            public void actionPerformed(ActionEvent e) {
                 String ss = ((JButton)(e.getSource())).getText();
                 store = (JButton) e.getSource();
                 vt.add(store);
@@ -160,10 +162,13 @@ public class Calculator {
         }
 
         //Listen to the input, for signal.
-        class ListenerSignal implements ActionListener{
+        class ListenerSignal implements ActionListener //implements ActionListener
+        {
             //Operation singal
             @SuppressWarnings("unchecked")
-            public void actionPerformed(ActiveEvent e) {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 String ss2 = ((JButton) e.getSource()).getText();
                 store = (JButton) e.getSource();
 
@@ -171,7 +176,7 @@ public class Calculator {
 
                 if (k2 == 1) {
                     /* if k1==1, then input number is stored in str1;
-                    *if k1==2, then input number is stored in str2. */
+                     *if k1==2, then input number is stored in str2. */
                     k1 = 2;
                     k5 =1;
                     signal = ss2;
@@ -201,9 +206,12 @@ public class Calculator {
         }
 
         //Logcial for clear button
-        class ListenerClear implements ActionListener{
+        class ListenerClear implements ActionListener //implements ActionListener
+        {
             @SuppressWarnings("unchecked")
-            public void actionPerformed(ActiveEvent e) {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 store = (JButton) e.getSource();
                 vt.add(store);
                 k5=1;
@@ -218,14 +226,16 @@ public class Calculator {
                 resultTextField.setText(result);
                 vt.clear();
             }
-
         }
 
         //"=" event
-        class ListenerCal implements ActionListener {
+        class ListenerCal implements ActionListener //implements ActionListener
+        {
             @SuppressWarnings("unchecked")
-            public void actionPerformed(ActiveEvent e) {
-                store = (JButton) e.getSource;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                store = (JButton) e.getSource();
                 vt.add(store);
                 cal();
 
@@ -240,9 +250,13 @@ public class Calculator {
         }
 
         //"." event
-        class ListenerFloat implements ActionListener {
+        class ListenerFloat implements ActionListener //implements ActionListener
+        {
+
             @SuppressWarnings("unchecked")
-            public void actionPerformed(ActiveEvent e) {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 store = (JButton) e.getSource();
                 vt.add(store);
 
