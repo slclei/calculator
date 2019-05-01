@@ -14,3 +14,5 @@ TODO:
 4/31 update:
 Remove duplicate code in signalListener;
 
+5/1
+In SignalListener class, determine k2 value is vital for following calculation.

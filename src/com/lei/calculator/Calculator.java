@@ -25,9 +25,9 @@ public class Calculator {
     int k1 = 1;
     //k2 record number of input signal. k2>1 indicate a calculation with multiple signals.
     int k2 = 1;
-    //k3 indicate str1 can be clear to be 0 or not. if k3=1, then str1 can be clear to be 0.
+    //k3 indicate str1 can be clear to be 0 or not. if k3=1, then str1 is clear to be 0.
     int k3 = 1;
-    //k4 indicate str2 can be clear to be 0 or not. if k4=1, then str2 can be clear to be 0.
+    //k4 indicate str2 can be clear to be 0 or not. if k4=1, then str2 is clear to be 0.
     int k4 = 1;
     //if k5=1, then float number will be record.
     int k5 = 1;
@@ -185,9 +185,9 @@ public class Calculator {
                     int a = vt.size();
                     JButton c = (JButton) vt.get(a-2);
 
-                    //Check if the second last one is number, then calculate previous calculation
-                // otherwise, if the second last one is signal, ignore the input
                 if (k2!=1) {
+                    //Check if the second last one is number, then calculate previous calculation
+                    // otherwise, if the second last one is signal, ignore the input
                     if (!(c.getText().equals("+")) && !(c.getText().equals("-"))
                             && !(c.getText().equals("*"))
                             && !(c.getText().equals("/"))) {
